@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inc/Dec Counter</title>
+    <style>
+        .product-card {
+            width: 300px;
+            border: 1px solid black;
+            margin: 10px auto;
+            border-radius: 10px;
+            background-color: bisque;
+        }
+
+        .img-mob {
+            height: 200px;
+            display: block;
+            margin: 10px auto;
+        }
+
+        .btn-buy-now {
+            cursor: pointer;
+            display: block;
+            margin: 10px auto;
+            font-size: 20px;
+            padding: 5px 20px;
+            border-radius: 25px;
+            border: 1px solid black;
+        }
+
+        .btn-quantity {
+            height: 40px;
+            margin-top: 30px;
+            cursor: pointer;
+        }
+
+        .quantity-btn-container {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .quantity-text {
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="product-card">
+        <img src="./product-image.jpg" class="img-mob" />
+
+        <div class="quantity-btn-container">
+            <img src="./minus-button.png" class="btn-quantity" onclick="handleQuantityChange('dec')"  />
+
+
+            <span class="quantity-text" id="quantity-text">1</span>
+
+
+            <img src="./add.png" class="btn-quantity" onclick="handleQuantityChange('inc')" />
+        </div>
+
+
+        <button class="btn-buy-now">Buy Now</button>
+    </div>
+
+    <script>
+        function handleQuantityChange(action){
+            const quantityElement = document.getElementById("quantity-text")
+
+            let quantity = parseInt(quantityElement.innerText);
+
+           if(quantity==1 && action=='dec'){
+            alert('Quantity cannot be less than 1')
+            return
+           }
+           else if(quantity==5 && action=='inc'){
+            alert('Quantity cannot be greater than 5')
+            return
+           }
+           quantityElement.innerText = action=='inc' ? ++quantity : --quantity
+        }
+
+
+    </script>
+</body>
+
+</html>
